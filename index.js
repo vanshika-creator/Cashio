@@ -1,21 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.css';
-import reportWebVitals from './reportWebVitals';
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise
 
-ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+const db = {}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+db.mongoose = mongoose
+
+db.user = require("./user.model")
+db.category = require('./category.model')
+db.product = require('./product.model')
+db.transaction = require('./transaction.model')
+db.setting = require('./setting.model')
+
+module.exports = db
